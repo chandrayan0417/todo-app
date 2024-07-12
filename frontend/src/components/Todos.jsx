@@ -1,19 +1,17 @@
-export function Todos({ todos }) {
+export function Todos({ todos, markAsComplete }) {
   return (
     <div>
-      {todos.map(function (todos) {
-        return (
+      {todos.map(todo => (
+        <div key={todo._id}>
           <div>
-            <div>
-              <h2>{todos.title}</h2>
-              <h3>{todos.description}</h3>
-              <button>
-                {todos.completed == true ? "Completed" : "Mark as complete"}
-              </button>
-            </div>
+            <h2>{todo.title}</h2>
+            <h3>{todo.description}</h3>
+            <button onClick={() => markAsComplete(todo._id)}>
+              {todo.completed ? "Completed" : "Mark as complete"}
+            </button>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 }
